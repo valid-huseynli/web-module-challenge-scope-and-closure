@@ -27,11 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * -Counter2 is a use regular function and global var. counter1 is way fancier beacuse uses high order function.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * -They both use closures, because it's a working function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ - In most scenarios counter1 is better than counter1, beacuse counter2 has global vars.
 */
 
 // counter1 code
@@ -56,9 +56,8 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(){
+return Math.floor(Math.random() *3 )
 
 }
 
