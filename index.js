@@ -27,11 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * -Counter2 is a use regular function and global var. counter1 is way fancier beacuse uses high order function.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * -They both use closures, because it's a working function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ - In most scenarios counter1 is better than counter1, beacuse counter2 has global vars.
 */
 
 // counter1 code
@@ -56,11 +56,13 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
 
-    /*Code Here*/
 
+
+function inning(){
+  return Math.floor(Math.random() * 3);
 }
+console.log(inning(3));
 
 /* Task 3: finalScore()
 
@@ -76,11 +78,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, numInnings) {
+  let home = 0;
+  let away = 0;
+  for (let i = 0; i < numInnings; i++) {
+      home += inning();
+  }
+  for (let i = 0; i < numInnings; i++) {
+      away += inning();}
+  
+  return {"Home": home,"Away": away};
 }
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -102,9 +111,34 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getInningScore(inning) {
+  return {home: inning(), away: inning()}
 }
+
+function scoreboard(inning,getInningScore,numInnings) {
+ let awayTeam = 0
+ let homeTeam = 0
+  for (let i = 1; i <= numInnings; i++){
+    if (i === 1) {
+      awayTeam += inning(getInningScore).away;
+      homeTeam += inning(getInningScore).home;
+      console.log(`1st inning: ${awayTeam} - ${homeTeam}`);
+    }else if (i === 2) {
+      awayTeam += inning(getInningScore).away;
+      homeTeam += inning(getInningScore).home;
+      console.log(`2nd inning: ${awayTeam} - ${homeTeam}`);
+    } else if (i === 3) {
+      awayTeam += inning(getInningScore).away;
+      homeTeam += inning(getInningScore).home;
+      console.log(`3rd inning: ${awayTeam} - ${homeTeam}`);
+    } else {
+      awayTeam += inning(getInningScore).away;
+      homeTeam += inning(getInningScore).home;
+      console.log(`${i}st inning: ${awayTeam} - ${homeTeam}`);
+    }
+  }
+console.log(`Final Score: ${awayTeam} - ${homeTeam}`);
+}
+scoreboard(getInningScore, inning, 9)
 
 
